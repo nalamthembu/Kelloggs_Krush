@@ -7,49 +7,25 @@ namespace Gameplay
     [RequireComponent(typeof(Rigidbody))]
     public class Ball : MonoBehaviour
     {
-        Rigidbody m_Rigidbody;
+        [SerializeField] Vector3 m_StartForce;
 
-        private void Awake()
+        Rigidbody m_RigidBody;
+
+        private void Start()
         {
-            m_Rigidbody = GetComponent<Rigidbody>();
-
-            InitialiseRigidbody();
-        }
-
-        void InitialiseRigidbody()
-        {
-            m_Rigidbody.constraints = RigidbodyConstraints.FreezePositionZ;
-        }
-
-        public void Hit(Vector3 playerPosition)
-        {
-            m_Rigidbody.AddForce(playerPosition.magnitude * -playerPosition, ForceMode.Impulse);
-        }
-
-        private void FixedUpdate()
-        {
-            m_Rigidbody.velocity += Vector3.down * Time.deltaTime;
+            m_RigidBody = GetComponent<Rigidbody>();
+            m_RigidBody.AddForce(m_StartForce, ForceMode.Impulse);
         }
 
         public void ResetBall()
         {
-            m_Rigidbody.velocity = Vector3.zero;
+            m_RigidBody.velocity = default;
         }
 
-        public void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter(Collision collision)
         {
             if (collision.collider.CompareTag(FLOOR_TAG))
-            {
                 GAME_MANAGER.Ball_HitFloor();
-                return;
-            }
-
-            Player player = collision.transform.GetComponent<Player>();
-
-            if (player)
-                return;
-
-            m_Rigidbody.AddForce(-collision.contacts[0].normal * 10f, ForceMode.Impulse);
         }
     }
 }
