@@ -9,6 +9,7 @@ namespace Gameplay
         CharacterController m_CharacterController;
 
         [SerializeField][Range(1, 10)] float m_MovementSpeed = 2;
+        [SerializeField][Range(1, 20)] float m_Distance = 15f;
         [SerializeField] Transform m_Target;
 
         private Rigidbody m_Ball;
@@ -27,6 +28,16 @@ namespace Gameplay
         }
 
         private void Update()
+        {
+            Movement();
+
+            Aim();
+
+            if (m_CanHitBall && Input.GetKeyDown(KeyCode.Space))
+                Launch();
+        }
+
+        void Movement()
         {
             Vector2 input = new
                 (
@@ -47,9 +58,12 @@ namespace Gameplay
             velocity += 10 * Time.deltaTime * Vector3.down;
 
             m_CharacterController.Move(velocity);
+        }
 
-            if (m_CanHitBall && Input.GetKeyDown(KeyCode.Space))
-                Launch();
+        void Aim()
+        {
+            m_Target.position =
+                Vector3.forward * -transform.position.z + Vector3.right * cameraPointerPosition.x;
         }
 
         void Launch()
