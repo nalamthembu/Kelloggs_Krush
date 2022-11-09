@@ -63,7 +63,7 @@ namespace Gameplay
         void Aim()
         {
             m_Target.position =
-                Vector3.forward * -transform.position.z + Vector3.right * cameraPointerPosition.x;
+                Vector3.forward * -transform.position.z;
         }
 
         void Launch()

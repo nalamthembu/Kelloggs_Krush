@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MovementSpeed: 5
+  m_Distance: 15
   m_Target: {fileID: 552529443}
 --- !u!65 &17671476
 BoxCollider:
@@ -1468,7 +1469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5574413985927690996, guid: efe060d49c2bada409ffcf82dc905ade, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.809999
+      value: -6.14
       objectReference: {fileID: 0}
     - target: {fileID: 5574413985927690996, guid: efe060d49c2bada409ffcf82dc905ade, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1517,7 +1518,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
