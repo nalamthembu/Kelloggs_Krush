@@ -8,9 +8,10 @@ namespace Managers
     {
         public static GameManager GAME_MANAGER;
 
-        Vector3 RespawnArea = new Vector3(0, 5, 0);
-
         private Ball m_Ball;
+
+        [SerializeField][Range(-1, -20)] float m_Gravity = -18;
+        [SerializeField][Range(0, 20)] float m_h;
 
         private void Awake()
         {
@@ -29,13 +30,20 @@ namespace Managers
             DontDestroyOnLoad(gameObject);
         }
 
-
-        public void Ball_HitFloor()
+        public Ball GetBall()
         {
-            m_Ball.ResetBall();
-            m_Ball.transform.position = RespawnArea;
+            return m_Ball;
         }
 
+        public float GetGravity()
+        {
+            return m_Gravity;
+        }
+
+        public float GetHeight()
+        {
+            return m_h;
+        }
     }
 
     public class GameStrings

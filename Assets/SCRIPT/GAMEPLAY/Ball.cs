@@ -21,11 +21,5 @@ namespace Gameplay
         {
             m_RigidBody.velocity = default;
         }
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.collider.CompareTag(FLOOR_TAG))
-                GAME_MANAGER.Ball_HitFloor();
-        }
     }
 }
