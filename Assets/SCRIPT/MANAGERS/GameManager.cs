@@ -28,14 +28,6 @@ namespace Managers
             m_Ball = FindObjectOfType<Ball>();
 
             DontDestroyOnLoad(gameObject);
-
-            InitialiseCursor();
-        }
-
-        private void InitialiseCursor()
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = false;
         }
 
         public Ball GetBall()

@@ -1,10 +1,9 @@
-using UnityEngine;
 using static Managers.GameManager;
+using System.Collections;
+using UnityEngine;
 
-
-namespace Gameplay
-{
-    public class Player : MonoBehaviour
+namespace Gameplay {
+    public class AI : MonoBehaviour
     {
         CharacterController m_CharacterController;
 
@@ -13,6 +12,8 @@ namespace Gameplay
         [SerializeField] Transform m_Target;
         [SerializeField] LayerMask m_Mask;
         [SerializeField][Range(1, 100)] float m_SidewaysMovementCap = 45;
+
+        private Player m_Player;
 
         private Rigidbody m_Ball;
 
@@ -27,13 +28,13 @@ namespace Gameplay
             m_Ball.useGravity = false;
 
             m_Ball.isKinematic = true;
+
+            m_Player = FindObjectOfType<Player>();
         }
 
         private void Update()
         {
             Movement();
-
-            Aim();
 
             if (m_CanHitBall && Input.GetKeyDown(KeyCode.Space))
                 Launch();
@@ -41,36 +42,25 @@ namespace Gameplay
 
         void Movement()
         {
-            Vector2 input = new
-                (
-                    Input.GetAxisRaw("Horizontal"),
-                    Input.GetAxisRaw("Vertical")
-                );
+            foreach (Collider c in Physics.OverlapSphere(transform.position, 6f))
+            {
+                if (c.CompareTag("Ball"))
+                {
+                    ULerp(c.transform.position);
+                }
+            }
 
-            Vector2 inputNormalised = input.normalized;
-
-            float inputMagnitude = inputNormalised.magnitude;
-
-            Vector3 velocity = Vector3.right * inputNormalised.x + Vector3.forward * inputNormalised.y;
-
-            velocity *= (m_MovementSpeed * 2) * inputMagnitude;
-
-            velocity *= Time.deltaTime;
-
-            velocity += 10 * Time.deltaTime * Vector3.down;
-
-            m_CharacterController.Move(velocity);
+            TLerp(m_Target, m_Player.transform.position + Vector3.right * 2F);
         }
 
-        void Aim()
+        void ULerp(Vector3 b)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            transform.position = Vector3.Lerp(transform.position, b, Time.deltaTime * m_MovementSpeed * 2);
+        }
 
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, m_Mask))
-            {
-                m_Target.position =
-                Vector3.forward * -transform.position.z + hitInfo.point.x * Vector3.right;
-            }
+        void TLerp(Transform t, Vector3 b)
+        {
+            t.position = Vector3.Lerp(t.position, b, Time.deltaTime * m_MovementSpeed);
         }
 
         void Launch()
@@ -107,9 +97,13 @@ namespace Gameplay
         {
             if (m_Target)
             {
-                Gizmos.color = Color.red;
+                Gizmos.color = Color.yellow;
                 Gizmos.DrawCube(m_Target.position, Vector3.one * 1f);
             }
+
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(transform.position, 6f);
         }
     }
+
 }

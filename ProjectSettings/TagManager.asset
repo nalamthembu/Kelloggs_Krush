@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Ball
+  - Opposite
   layers:
   - Default
   - TransparentFX
