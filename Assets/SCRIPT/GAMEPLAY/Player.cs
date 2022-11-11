@@ -35,7 +35,7 @@ namespace Gameplay
 
             Aim();
 
-            if (m_CanHitBall && Input.GetKeyDown(KeyCode.Space))
+            if (m_CanHitBall)// && Input.GetKeyDown(KeyCode.Space))
                 Launch();
         }
 

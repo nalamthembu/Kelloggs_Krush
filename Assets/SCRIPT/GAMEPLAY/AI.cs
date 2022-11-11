@@ -19,6 +19,8 @@ namespace Gameplay {
 
         private bool m_CanHitBall;
 
+        [SerializeField] Transform m_OriginalPosition;
+
         void Start()
         {
             m_CharacterController = GetComponent<CharacterController>();
@@ -34,15 +36,26 @@ namespace Gameplay {
 
         private void Update()
         {
-            Movement();
-
-            if (m_CanHitBall && Input.GetKeyDown(KeyCode.Space))
+            if (m_CanHitBall)
+            {
                 Launch();
+            }
+
+            Movement();
         }
 
         void Movement()
         {
-            foreach (Collider c in Physics.OverlapSphere(transform.position, 6f))
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit groundHit))
+                if (!groundHit.transform.CompareTag("Floor"))
+                    return;
+
+            if (!m_CanHitBall)
+            {
+                ULerp(m_OriginalPosition.position);
+            }
+
+            foreach (Collider c in Physics.OverlapSphere(transform.position, 8f))
             {
                 if (c.CompareTag("Ball"))
                 {
@@ -50,12 +63,13 @@ namespace Gameplay {
                 }
             }
 
-            TLerp(m_Target, m_Player.transform.position + Vector3.right * 2F);
+            TLerp(m_Target, m_Player.transform.position + Vector3.right * 3F);
         }
 
         void ULerp(Vector3 b)
         {
-            transform.position = Vector3.Lerp(transform.position, b, Time.deltaTime * m_MovementSpeed * 2);
+            b.y = 0;
+            transform.position = Vector3.Lerp(transform.position, b, Time.deltaTime * m_MovementSpeed * 4);
         }
 
         void TLerp(Transform t, Vector3 b)
@@ -102,7 +116,7 @@ namespace Gameplay {
             }
 
             Gizmos.color = Color.magenta;
-            Gizmos.DrawWireSphere(transform.position, 6f);
+            Gizmos.DrawWireSphere(transform.position, 8f);
         }
     }
 
