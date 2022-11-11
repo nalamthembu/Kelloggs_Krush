@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Match;
 using static Managers.GameManager;
 
 
@@ -79,6 +80,8 @@ namespace Gameplay
             m_Ball.useGravity = true;
             m_Ball.isKinematic = false;
             m_Ball.velocity = CalculateLaunchVelocity();
+
+            MATCH.SetResponsibility(RESPONSIBILITY.ENEMY);
         }
 
         Vector3 CalculateLaunchVelocity()

@@ -3,6 +3,12 @@ using Gameplay;
 
 namespace Managers
 {
+    enum RESPONSIBILITY
+    {
+        PLAYER,
+        OPPONENT
+    }
+
     [RequireComponent(typeof(InputManager))]
     public class GameManager : Manager
     {

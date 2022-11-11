@@ -1,5 +1,6 @@
 using static Managers.GameManager;
 using System.Collections;
+using static Match;
 using UnityEngine;
 
 namespace Gameplay {
@@ -55,7 +56,7 @@ namespace Gameplay {
                 ULerp(m_OriginalPosition.position);
             }
 
-            foreach (Collider c in Physics.OverlapSphere(transform.position, 8f))
+            foreach (Collider c in Physics.OverlapSphere(transform.position, 10f))
             {
                 if (c.CompareTag("Ball"))
                 {
@@ -83,6 +84,8 @@ namespace Gameplay {
             m_Ball.useGravity = true;
             m_Ball.isKinematic = false;
             m_Ball.velocity = CalculateLaunchVelocity();
+
+            MATCH.SetResponsibility(RESPONSIBILITY.PLAYER);
         }
 
         Vector3 CalculateLaunchVelocity()
@@ -116,8 +119,7 @@ namespace Gameplay {
             }
 
             Gizmos.color = Color.magenta;
-            Gizmos.DrawWireSphere(transform.position, 8f);
+            Gizmos.DrawWireSphere(transform.position, 10f);
         }
     }
-
 }

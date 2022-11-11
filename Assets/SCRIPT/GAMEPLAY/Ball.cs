@@ -17,6 +17,14 @@ namespace Gameplay
             m_RigidBody.AddForce(m_StartForce, ForceMode.Impulse);
         }
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.contacts[0].otherCollider.CompareTag("Floor"))
+            {
+                Debug.Log("Game has ended");
+            }
+        }
+
         public void ResetBall()
         {
             m_RigidBody.velocity = default;
