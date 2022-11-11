@@ -28,6 +28,7 @@ namespace Gameplay
             m_Ball.useGravity = false;
 
             m_Ball.isKinematic = true;
+
         }
 
         private void Update()
@@ -38,6 +39,8 @@ namespace Gameplay
 
             if (m_CanHitBall)// && Input.GetKeyDown(KeyCode.Space))
                 Launch();
+
+            MATCH.SetPlayerAimIndicatorLocation(m_Target.position);
         }
 
         void Movement()

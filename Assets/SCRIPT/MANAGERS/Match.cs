@@ -11,6 +11,9 @@ public class Match : MonoBehaviour
 {
     [SerializeField] Color[] m_PlayerColours;
 
+    [SerializeField] Transform m_BallIndicator;
+    [SerializeField] Transform m_PlayerAimIndicator;
+
     RESPONSIBILITY m_Resposibility;
 
     float m_TimeElasped;
@@ -32,6 +35,46 @@ public class Match : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (m_PlayerAimIndicator is null || m_BallIndicator is null)
+        {
+            Debug.LogError("Player aim location or player ball indicator is null");
+        }
+    }
+
+    private void Update()
+    {
+        IncrementTime();
+        SetBallIndicatorLocation();
+        SetBallIndicatorVisibility();
+    }
+
+    public void SetPlayerAimIndicatorLocation(Vector3 pos) => m_PlayerAimIndicator.position = pos;
+
+    private void SetBallIndicatorVisibility()
+    {
+        switch (m_Resposibility)
+        {
+            case RESPONSIBILITY.ENEMY:
+                m_BallIndicator.gameObject.SetActive(false);
+                break;
+
+            case RESPONSIBILITY.PLAYER:
+                m_BallIndicator.gameObject.SetActive(true);
+                break;
+        }
+    }
+
+    private void IncrementTime()
+    {
+        m_TimeElasped += Time.deltaTime;
+    }
+
+    private void SetBallIndicatorLocation()
+    {
+        m_BallIndicator.position =
+            Vector3.right * m_Ball.transform.position.x +
+            Vector3.forward * m_Ball.transform.position.z;
     }
 
     private void GetBall() => m_Ball = FindObjectOfType<Ball>();
@@ -59,11 +102,6 @@ public class Match : MonoBehaviour
         m_Resposibility = rsp;
 
         m_Ball.ChangeColour(rsp);
-    }
-
-    public void Update()
-    {
-        m_TimeElasped += Time.deltaTime;
     }
 
     public void SetGameOver() => m_GameIsOver = true;

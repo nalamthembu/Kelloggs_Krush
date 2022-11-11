@@ -45,13 +45,14 @@ namespace Gameplay {
             Movement();
         }
 
+
         void Movement()
         {
             if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit groundHit))
                 if (!groundHit.transform.CompareTag("Floor"))
                     return;
 
-            if (!m_CanHitBall)
+            if (!m_CanHitBall && Vector3.Distance(transform.position, m_Ball.position) > .25f)
             {
                 ULerp(m_OriginalPosition.position);
             }
