@@ -9,6 +9,8 @@ public enum RESPONSIBILITY
 
 public class Match : MonoBehaviour
 {
+    #region PROPERTIES
+
     [SerializeField] Color[] m_PlayerColours;
 
     [SerializeField] Transform m_BallIndicator;
@@ -24,6 +26,9 @@ public class Match : MonoBehaviour
 
     public static Match MATCH;
 
+    #endregion
+
+    #region PRIVATE
     private void Awake()
     {
         if (MATCH is null)
@@ -42,6 +47,7 @@ public class Match : MonoBehaviour
         }
     }
 
+    
     private void Update()
     {
         IncrementTime();
@@ -79,6 +85,11 @@ public class Match : MonoBehaviour
 
     private void GetBall() => m_Ball = FindObjectOfType<Ball>();
 
+    private void Start() => StartGame();
+
+    #endregion
+
+    #region PUBLIC
     public int GetPlayerColourCount()
     {
         return m_PlayerColours.Length - 1;
@@ -88,8 +99,6 @@ public class Match : MonoBehaviour
     {
         return m_PlayerColours;
     }
-
-    private void Start() => StartGame();
 
     public void StartGame()
     {
@@ -106,4 +115,10 @@ public class Match : MonoBehaviour
 
     public void SetGameOver() => m_GameIsOver = true;
 
+    public float GetElapsedTime()
+    {
+        return m_TimeElasped;
+    }
+
+    #endregion
 }
