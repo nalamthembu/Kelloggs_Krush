@@ -52,10 +52,11 @@ namespace Gameplay {
                 if (!groundHit.transform.CompareTag("Floor"))
                     return;
 
-            if (!m_CanHitBall && Vector3.Distance(transform.position, m_Ball.position) > .25f)
+            if (Vector3.Distance(transform.position, m_Ball.position) > 6f)
             {
                 ULerp(m_OriginalPosition.position);
             }
+           
 
             foreach (Collider c in Physics.OverlapSphere(transform.position, 10f))
             {
