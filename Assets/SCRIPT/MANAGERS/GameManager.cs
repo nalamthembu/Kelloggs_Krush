@@ -31,9 +31,31 @@ namespace Managers
                 return;
             }
 
-            m_Ball = FindObjectOfType<Ball>();
-
             DontDestroyOnLoad(gameObject);
+        }
+
+        private void Start()
+        {
+            InitialiseGame();
+        }
+
+        private void OnLevelWasLoaded(int level)
+        {
+            InitialiseGame();
+        }
+
+        public void ExitGame()
+        {
+            Application.Quit();
+
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        }
+
+        void InitialiseGame()
+        {
+            m_Ball = FindObjectOfType<Ball>();
         }
 
         public Ball GetBall()
