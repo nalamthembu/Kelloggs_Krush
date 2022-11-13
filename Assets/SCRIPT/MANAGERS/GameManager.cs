@@ -32,10 +32,7 @@ namespace Managers
             }
 
             DontDestroyOnLoad(gameObject);
-        }
 
-        private void Start()
-        {
             InitialiseGame();
         }
 
