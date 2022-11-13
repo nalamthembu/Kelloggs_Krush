@@ -26,6 +26,8 @@ public class Match : MonoBehaviour
 
     public static Match MATCH;
 
+    [SerializeField] bool m_IsTutorial = false;
+
     #endregion
 
     #region PRIVATE
@@ -41,6 +43,9 @@ public class Match : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if (m_IsTutorial)
+            return;
+
         if (m_PlayerAimIndicator is null || m_BallIndicator is null)
         {
             Debug.LogError("Player aim location or player ball indicator is null");
@@ -50,6 +55,9 @@ public class Match : MonoBehaviour
     
     private void Update()
     {
+        if (m_IsTutorial)
+            return;
+
         IncrementTime();
         SetBallIndicatorLocation();
         SetBallIndicatorVisibility();
