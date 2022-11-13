@@ -35,6 +35,11 @@ public class MusicManager : MonoBehaviour
         PlaySong(Random.Range(0, m_MusicLibrary.music.Length));
     }
 
+    private void OnLevelWasLoaded(int level)
+    {
+        PlaySong(Random.Range(0, m_MusicLibrary.music.Length));
+    }
+
     void InitialiseAudioSource()
     {
         m_Source = gameObject.AddComponent<AudioSource>();
