@@ -16,9 +16,6 @@ MonoBehaviour:
   - title: Tech House Vibes
     artist: "Alejandro Maga\xF1a"
     clip: {fileID: 8300000, guid: a4ecb5b3857dbc144bccc62aeca9f323, type: 3}
-  - title: Beating Break
-    artist: "Alejandro Maga\xF1a"
-    clip: {fileID: 8300000, guid: 008d208449de5ac4f88a5551dd6bd26f, type: 3}
   - title: Deep Urban
     artist: Eugenio Mininni
     clip: {fileID: 8300000, guid: ee9e94343942aa243b76b4691db2e6eb, type: 3}
