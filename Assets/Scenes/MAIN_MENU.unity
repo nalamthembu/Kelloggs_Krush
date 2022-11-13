@@ -780,8 +780,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1539628176}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+      - m_Target: {fileID: 1990241863}
+        m_TargetAssemblyTypeName: SingletonManager, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 3
         m_Arguments:
@@ -3594,17 +3594,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12638972715a6e543ae643afc22a54f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1562642037 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4492002351199883564, guid: ad2c614c5e03a554f9473358a98c77f8, type: 3}
-  m_PrefabInstance: {fileID: 820171089}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31bc5a6f47c71f84ea48e5c0498c6337, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1589522480
 GameObject:
   m_ObjectHideFlags: 0
@@ -5110,10 +5099,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 589661908854844623, guid: 8d40ddbe38fa70b4baf19ade236ffb06, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1562642037}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d40ddbe38fa70b4baf19ade236ffb06, type: 3}
 --- !u!1001 &5830853966786377137

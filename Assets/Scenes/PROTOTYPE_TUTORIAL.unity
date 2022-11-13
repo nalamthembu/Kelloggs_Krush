@@ -1193,6 +1193,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 438ddd6663265ec4fb753c0c0eea742b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b8a24a559557fc489d129a212f4ea47, type: 3}
+--- !u!4 &817269283 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2945089839283167104, guid: 5b8a24a559557fc489d129a212f4ea47, type: 3}
+  m_PrefabInstance: {fileID: 817269282}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &827918962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,8 +1760,8 @@ MonoBehaviour:
   m_PlayerColours:
   - {r: 1, g: 0, b: 0, a: 0}
   - {r: 1, g: 0.79322517, b: 0, a: 0}
-  m_BallIndicator: {fileID: 0}
-  m_PlayerAimIndicator: {fileID: 0}
+  m_BallIndicator: {fileID: 2780419317227278699}
+  m_PlayerAimIndicator: {fileID: 817269283}
   m_IsTutorial: 1
 --- !u!4 &1258812457
 Transform:
@@ -2708,6 +2713,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b8a24a559557fc489d129a212f4ea47, type: 3}
+--- !u!4 &2780419317227278699 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2945089839283167104, guid: 5b8a24a559557fc489d129a212f4ea47, type: 3}
+  m_PrefabInstance: {fileID: 2780419317227278698}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2923920907247663134
 PrefabInstance:
   m_ObjectHideFlags: 0

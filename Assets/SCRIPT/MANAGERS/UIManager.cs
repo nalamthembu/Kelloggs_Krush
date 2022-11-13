@@ -13,6 +13,10 @@ namespace Managers
         [SerializeField] GameObject m_MainMenuPrompt;
         [SerializeField] GameObject m_ExitPrompt;
 
+        Match m_CurrentMatch;
+
+        bool m_ResetTimeScale = false;
+
         private void Awake()
         {
             if (UI_MANAGER is null)
@@ -23,11 +27,46 @@ namespace Managers
                 return;
 
             DontDestroyOnLoad(gameObject);
+
+            FindMatch();
+        }
+
+        public void OnLevelWasLoaded(int level)
+        {
+            FindMatch();
+        }
+        
+        private void FindMatch()
+        {
+            m_CurrentMatch = FindObjectOfType<Match>();
+        }
+
+        private void Update()
+        {
+            if (m_CurrentMatch is not null && !m_CurrentMatch.IsInTutorialMode())
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    m_PauseMenu.SetActive(!m_PauseMenu.activeSelf);
+                }
+            }
+
+            if (!m_ResetTimeScale)
+            Time.timeScale = (m_PauseMenu.activeSelf) ? 0 : 1;
+
+            if (m_ResetTimeScale)
+                m_ResetTimeScale = false;
         }
 
         public void PromptMainMenu() => m_MainMenuPrompt.SetActive(true);
 
         public void PromptExit() => m_ExitPrompt.SetActive(true);
+
+        public void ResetTimeScale()
+        {
+            m_ResetTimeScale = true;
+            Time.timeScale = 1;
+        }
 
         #region METHODS_AND_BOILER
         public void FadeScreenToBlack()

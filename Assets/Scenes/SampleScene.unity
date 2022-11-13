@@ -207,13 +207,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8a0258b6f0f14468b59e135dbd7062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlayerNumber: 0
   m_MovementSpeed: 10
-  m_Gravity: -12
-  m_JumpHeight: 2
-  m_GroundLayers:
+  m_Distance: 15
+  m_Target: {fileID: 0}
+  m_Mask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
+  m_SidewaysMovementCap: 45
 --- !u!143 &268355156
 CharacterController:
   m_ObjectHideFlags: 0
@@ -855,6 +855,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31bc5a6f47c71f84ea48e5c0498c6337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Gravity: -18
+  m_h: 0
 --- !u!114 &1514179135
 MonoBehaviour:
   m_ObjectHideFlags: 0

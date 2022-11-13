@@ -98,6 +98,12 @@ public class Match : MonoBehaviour
     #endregion
 
     #region PUBLIC
+
+    public bool IsInTutorialMode()
+    {
+        return m_IsTutorial;
+    }
+
     public int GetPlayerColourCount()
     {
         return m_PlayerColours.Length - 1;

@@ -6,4 +6,6 @@ using static Managers.GameManager;
 public class SingletonManager : MonoBehaviour
 {
     public void LoadScene(int sceneToLoad) => LEVEL_MANAGER.LoadScene(sceneToLoad);
+
+    public void ExitGame() => GAME_MANAGER.ExitGame();
 }
