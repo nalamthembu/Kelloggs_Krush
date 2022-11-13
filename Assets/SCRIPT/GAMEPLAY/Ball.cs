@@ -14,12 +14,16 @@ namespace Gameplay
 
         MeshRenderer m_Renderer;
 
+        Match MATCH;
+
         private void Start()
         {
             m_RigidBody = GetComponent<Rigidbody>();
             m_RigidBody.AddForce(m_StartForce, ForceMode.Impulse);
 
             m_Renderer = GetComponent<MeshRenderer>();
+
+            MATCH = FindObjectOfType<Match>();
         }
 
         private void OnCollisionEnter(Collision collision)

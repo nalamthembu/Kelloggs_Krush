@@ -21,7 +21,9 @@ public class CameraController : MonoBehaviour
 
         transform.position = ULerpPos(desiredPosition);
 
-        transform.forward = ULerpForward(m_Target.forward + Vector3.down * m_ViewAngle);
+        transform.LookAt(m_Target);
+
+        //transform.forward = ULerpForward(m_Target.forward + Vector3.down * m_ViewAngle);
     }
 
     #region HELPER METHOD

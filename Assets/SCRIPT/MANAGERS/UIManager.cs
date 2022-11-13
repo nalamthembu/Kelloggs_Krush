@@ -17,6 +17,8 @@ namespace Managers
 
         bool m_ResetTimeScale = false;
 
+        bool m_OverrideTimeScale = false;
+
         private void Awake()
         {
             if (UI_MANAGER is null)
@@ -41,6 +43,8 @@ namespace Managers
             m_CurrentMatch = FindObjectOfType<Match>();
         }
 
+        public void OverrideTimeScale() => m_OverrideTimeScale = true;
+
         private void Update()
         {
             if (m_CurrentMatch is not null && !m_CurrentMatch.IsInTutorialMode())
@@ -51,8 +55,23 @@ namespace Managers
                 }
             }
 
-            if (!m_ResetTimeScale)
-            Time.timeScale = (m_PauseMenu.activeSelf) ? 0 : 1;
+            if (!m_OverrideTimeScale)
+            {
+                if (m_CurrentMatch)
+                {
+                    if (!m_ResetTimeScale && !m_CurrentMatch.IsGameOver())
+                        Time.timeScale = (m_PauseMenu.activeSelf) ? 0 : 1;
+                }
+
+                else
+                {
+                    ResetTimeScale();
+                }
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
 
             if (m_ResetTimeScale)
                 m_ResetTimeScale = false;

@@ -7,5 +7,15 @@ public class SingletonManager : MonoBehaviour
 {
     public void LoadScene(int sceneToLoad) => LEVEL_MANAGER.LoadScene(sceneToLoad);
 
+    public void PromptMainMenu() => UI_MANAGER.PromptMainMenu();
+
+    public void ResetGame()
+    {
+        Match currentMatch = FindObjectOfType<Match>();
+
+        if (currentMatch)
+            currentMatch.ResettingGame();
+    }
+
     public void ExitGame() => GAME_MANAGER.ExitGame();
 }

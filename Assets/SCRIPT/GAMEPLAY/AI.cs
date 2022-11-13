@@ -22,6 +22,8 @@ namespace Gameplay {
 
         [SerializeField] Transform m_OriginalPosition;
 
+        Match MATCH;
+
         void Start()
         {
             m_CharacterController = GetComponent<CharacterController>();
@@ -86,6 +88,9 @@ namespace Gameplay {
             m_Ball.useGravity = true;
             m_Ball.isKinematic = false;
             m_Ball.velocity = CalculateLaunchVelocity();
+
+            if (MATCH is null)
+                MATCH = FindObjectOfType<Match>();
 
             MATCH.SetResponsibility(RESPONSIBILITY.PLAYER);
         }

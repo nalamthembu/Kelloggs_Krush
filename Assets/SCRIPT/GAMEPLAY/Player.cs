@@ -19,6 +19,8 @@ namespace Gameplay
 
         private bool m_CanHitBall;
 
+        Match MATCH;
+
         void Start()
         {
             m_CharacterController = GetComponent<CharacterController>();
@@ -33,6 +35,9 @@ namespace Gameplay
 
         private void Update()
         {
+            if (MATCH is null)
+                MATCH = FindObjectOfType<Match>();
+
             Movement();
 
             Aim();
