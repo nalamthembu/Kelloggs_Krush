@@ -1,4 +1,5 @@
 using static Managers.GameManager;
+using static SoundManager;
 using System.Collections;
 using static Match;
 using UnityEngine;
@@ -74,7 +75,7 @@ namespace Gameplay {
         void ULerp(Vector3 b)
         {
             b.y = 0;
-            transform.position = Vector3.Lerp(transform.position, b, Time.deltaTime * m_MovementSpeed * 4);
+            transform.position = Vector3.Lerp(transform.position, b, Time.deltaTime * m_MovementSpeed);
         }
 
         void TLerp(Transform t, Vector3 b)
@@ -113,6 +114,7 @@ namespace Gameplay {
         {
             Rigidbody rb = other.attachedRigidbody;
             m_CanHitBall = rb is not null && other.CompareTag("Ball");
+            SOUND_MANAGER.PlaySound(SOUND_MANAGER.GetSound(SOUND.SFX_BALL_HIT), transform.position);
         }
 
         private void OnTriggerExit(Collider other) => m_CanHitBall = false;

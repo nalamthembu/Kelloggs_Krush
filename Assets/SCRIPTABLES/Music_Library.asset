@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f440d69297795b44886583b8d6a71d45, type: 3}
+  m_Name: Music_Library
+  m_EditorClassIdentifier: 
+  music:
+  - title: Tech House Vibes
+    artist: "Alejandro Maga\xF1a"
+    clip: {fileID: 8300000, guid: a4ecb5b3857dbc144bccc62aeca9f323, type: 3}
+  - title: Beating Break
+    artist: "Alejandro Maga\xF1a"
+    clip: {fileID: 8300000, guid: 008d208449de5ac4f88a5551dd6bd26f, type: 3}
+  - title: Deep Urban
+    artist: Eugenio Mininni
+    clip: {fileID: 8300000, guid: ee9e94343942aa243b76b4691db2e6eb, type: 3}

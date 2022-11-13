@@ -1,5 +1,6 @@
 using UnityEngine;
 using static Match;
+using static SoundManager;
 using static Managers.GameStrings;
 using static Managers.GameManager;
 
@@ -33,6 +34,9 @@ namespace Gameplay
                 MATCH.SetGameOver();
                 Debug.Log("Game has ended");
             }
+
+            if (collision.relativeVelocity.magnitude > .5f)
+                SOUND_MANAGER.PlaySound(SOUND_MANAGER.GetSound(SOUND.SFX_BALL_HIT), transform.position);
         }
 
         public void ResetBall()

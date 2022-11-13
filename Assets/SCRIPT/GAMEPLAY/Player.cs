@@ -1,5 +1,6 @@
 using UnityEngine;
 using static Match;
+using static SoundManager;
 using static Managers.GameManager;
 
 
@@ -110,6 +111,8 @@ namespace Gameplay
         {
             Rigidbody rb = other.attachedRigidbody;
             m_CanHitBall = rb is not null && other.CompareTag("Ball");
+
+            SOUND_MANAGER.PlaySound(SOUND_MANAGER.GetSound(SOUND.SFX_BALL_HIT), transform.position);
         }
 
         private void OnTriggerExit(Collider other) => m_CanHitBall = false;

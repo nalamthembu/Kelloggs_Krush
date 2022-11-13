@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using static SoundManager;
 
 namespace Managers
 {
@@ -36,6 +37,7 @@ namespace Managers
         public void OnLevelWasLoaded(int level)
         {
             FindMatch();
+            m_OverrideTimeScale = false;
         }
         
         private void FindMatch()
@@ -76,6 +78,8 @@ namespace Managers
             if (m_ResetTimeScale)
                 m_ResetTimeScale = false;
         }
+
+        public void PlayUISound() => SOUND_MANAGER.PlaySound(SOUND_MANAGER.GetSound(SOUND.UI_BUTTON_CLICK));
 
         public void PromptMainMenu() => m_MainMenuPrompt.SetActive(true);
 

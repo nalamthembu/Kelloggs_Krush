@@ -135,6 +135,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 276931974096098010, guid: 8d40ddbe38fa70b4baf19ade236ffb06, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 589661908787756044, guid: 8d40ddbe38fa70b4baf19ade236ffb06, type: 3}
       propertyPath: m_Name
       value: USER_INTERFACE_MANAGER
@@ -366,6 +370,18 @@ MonoBehaviour:
       - m_Target: {fileID: 525317755}
         m_TargetAssemblyTypeName: Tutorial.TutorialBehaviour, Assembly-CSharp
         m_MethodName: PreviousSequence
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 757901149}
+        m_TargetAssemblyTypeName: SingletonManager, Assembly-CSharp
+        m_MethodName: PlayUISound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -931,6 +947,18 @@ MonoBehaviour:
       - m_Target: {fileID: 525317755}
         m_TargetAssemblyTypeName: Tutorial.TutorialBehaviour, Assembly-CSharp
         m_MethodName: NextSequence
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 757901149}
+        m_TargetAssemblyTypeName: SingletonManager, Assembly-CSharp
+        m_MethodName: PlayUISound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1767,6 +1795,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 757901149}
+        m_TargetAssemblyTypeName: SingletonManager, Assembly-CSharp
+        m_MethodName: PlayUISound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1246989961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1892,7 +1932,7 @@ Transform:
   m_Children:
   - {fileID: 99195828}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1327965155
 GameObject:
@@ -1982,6 +2022,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 757901149}
+        m_TargetAssemblyTypeName: SingletonManager, Assembly-CSharp
+        m_MethodName: PlayUISound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2137,7 +2189,7 @@ Transform:
   m_Children:
   - {fileID: 462911654}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1898124976
 GameObject:
@@ -2428,7 +2480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3752482304899456819, guid: c1771d23e15f7ae4c9b0e7349417aab3, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3752482304899456819, guid: c1771d23e15f7ae4c9b0e7349417aab3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2631,7 +2683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1226745693059020777, guid: 19cd42cb64fdeca4faaa9e6bde144e0b, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1226745693059020777, guid: 19cd42cb64fdeca4faaa9e6bde144e0b, type: 3}
       propertyPath: m_LocalPosition.x

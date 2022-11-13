@@ -149,11 +149,11 @@ public class Match : MonoBehaviour
 
         switch (m_Resposibility)
         {
-            case RESPONSIBILITY.ENEMY:
+            case RESPONSIBILITY.PLAYER:
                 m_MatchUI.MakeEndOfGameUIVisibleLoss(true);
                 break;
 
-            case RESPONSIBILITY.PLAYER:
+            case RESPONSIBILITY.ENEMY:
                 m_MatchUI.MakeEndOfGameUIVisibleWin(true);
                 break;
         }
