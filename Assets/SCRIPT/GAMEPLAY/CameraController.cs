@@ -9,6 +9,8 @@ public class CameraController : MonoBehaviour
     [SerializeField][Range(0, 1)] float m_ViewAngle = 25;
     [SerializeField][Range(1, 10)] float m_FollowSpeedMultiplier = 2;
 
+    Vector3 desiredPosition;
+
     private void Start()
     {
         if (m_Target is null)
@@ -17,7 +19,7 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector3 desiredPosition = m_Target.position - transform.forward * m_DistanceFromTarget;
+        desiredPosition = m_Target.position - transform.forward * m_DistanceFromTarget;
 
         transform.position = ULerpPos(desiredPosition);
 
@@ -30,11 +32,6 @@ public class CameraController : MonoBehaviour
     private Vector3 ULerpPos(Vector3 b)
     {
         return Vector3.Lerp(transform.position, b, Time.deltaTime * m_FollowSpeedMultiplier);
-    }
-
-    private Vector3 ULerpForward(Vector3 b)
-    {
-        return Vector3.Lerp(transform.forward, b, Time.deltaTime * m_FollowSpeedMultiplier);
     }
     #endregion
 }

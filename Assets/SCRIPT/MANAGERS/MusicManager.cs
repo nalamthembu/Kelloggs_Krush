@@ -73,6 +73,9 @@ public class MusicManager : MonoBehaviour
     {
         currentSongIndex = index;
 
+        if (m_Source is null)
+            InitialiseAudioSource();
+
         if (currentSongIndex > m_MusicLibrary.music.Length)
             currentSongIndex = 0;
 

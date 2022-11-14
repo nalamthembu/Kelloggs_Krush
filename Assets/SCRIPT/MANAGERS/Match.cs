@@ -18,6 +18,7 @@ public class Match : MonoBehaviour
     [SerializeField] Transform m_BallIndicator;
     [SerializeField] Transform m_PlayerAimIndicator;
     [SerializeField] GameObject m_EndOfMatchCamera;
+    [SerializeField] GameObject m_MainMatchCamera;
     [SerializeField] MatchUserInterface m_MatchUI;
     RESPONSIBILITY m_Resposibility;
 
@@ -160,6 +161,7 @@ public class Match : MonoBehaviour
 
         m_MatchUI.MakeInGameUIVisible(false);
         m_EndOfMatchCamera.SetActive(true);
+        m_MainMatchCamera.SetActive(false);
     }
 
     public float GetElapsedTime()

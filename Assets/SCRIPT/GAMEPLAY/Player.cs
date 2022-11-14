@@ -1,5 +1,4 @@
 using UnityEngine;
-using static Match;
 using static SoundManager;
 using static Managers.GameManager;
 
@@ -22,6 +21,17 @@ namespace Gameplay
 
         Match MATCH;
 
+        Vector3 velocity;
+
+        Vector2 input;
+
+        Camera mainCamera;
+
+        private void Awake()
+        {
+            mainCamera = Camera.main;
+        }
+
         void Start()
         {
             m_CharacterController = GetComponent<CharacterController>();
@@ -39,6 +49,9 @@ namespace Gameplay
             if (MATCH is null)
                 MATCH = FindObjectOfType<Match>();
 
+            if (MATCH.IsGameOver())
+                return;
+
             Movement();
 
             Aim();
@@ -51,19 +64,15 @@ namespace Gameplay
 
         void Movement()
         {
-            Vector2 input = new
+            input = new
                 (
                     Input.GetAxisRaw("Horizontal"),
                     Input.GetAxisRaw("Vertical")
                 );
 
-            Vector2 inputNormalised = input.normalized;
+            velocity = Vector3.right * input.normalized.x + Vector3.forward * input.normalized.y;
 
-            float inputMagnitude = inputNormalised.magnitude;
-
-            Vector3 velocity = Vector3.right * inputNormalised.x + Vector3.forward * inputNormalised.y;
-
-            velocity *= (m_MovementSpeed * 2) * inputMagnitude;
+            velocity *= (m_MovementSpeed * 2) * input.normalized.magnitude;
 
             velocity *= Time.deltaTime;
 
@@ -72,9 +81,11 @@ namespace Gameplay
             m_CharacterController.Move(velocity);
         }
 
+        Ray ray;
+
         void Aim()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out RaycastHit hitInfo, m_Mask))
             {

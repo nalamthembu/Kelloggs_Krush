@@ -13,7 +13,7 @@ public class MultipleTargetCamera : MonoBehaviour
     [SerializeField] float m_LookAngle = 25f;
 
     Vector3 m_Velocity;
-
+    
     Camera m_Camera;
 
     private void Start()
@@ -50,9 +50,7 @@ public class MultipleTargetCamera : MonoBehaviour
 
     void Move()
     {
-        Vector3 centrePoint = GetCentrePoint();
-
-        Vector3 newPos = centrePoint + m_Offset;
+        Vector3 newPos = GetCentrePoint() + m_Offset;
 
         CameraCollision(ref newPos, m_Targets[0].forward + Vector3.right * m_LookAngle);
         
@@ -87,6 +85,7 @@ public class MultipleTargetCamera : MonoBehaviour
 
         float castDist = castLine.magnitude;
         Vector3 castDir = castLine / castDist;
+
 
         if (Physics.BoxCast(castFrom, CameraHalfExtends, castDir, out RaycastHit hit,
                 lookRot, castDist, m_ObstructionMask, QueryTriggerInteraction.Ignore))

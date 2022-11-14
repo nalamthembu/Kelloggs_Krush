@@ -48,18 +48,19 @@ namespace Gameplay {
             Movement();
         }
 
-
         void Movement()
         {
             if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit groundHit))
                 if (!groundHit.transform.CompareTag("Floor"))
                     return;
 
-            if (Vector3.Distance(transform.position, m_Ball.position) > 6f)
+            /*if (Vector3.Distance(transform.position, m_Ball.position) > 6f)
             {
                 ULerp(m_OriginalPosition.position);
-            }
-           
+            }*/
+
+            if ((transform.position - m_Ball.transform.position).sqrMagnitude > 6 * 6)
+                ULerp(m_OriginalPosition.position);
 
             foreach (Collider c in Physics.OverlapSphere(transform.position, 10f))
             {
