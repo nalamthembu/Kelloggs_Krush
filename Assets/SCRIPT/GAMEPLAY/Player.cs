@@ -19,17 +19,19 @@ namespace Gameplay
 
         private bool m_CanHitBall;
 
-        Match MATCH;
+        Match m_Match;
 
-        Vector3 velocity;
+        Vector3 m_Velocity;
 
-        Vector2 input;
+        Vector2 m_Input;
 
-        Camera mainCamera;
+        Camera m_MainCamera;
+
+        Ray m_Ray;
 
         private void Awake()
         {
-            mainCamera = Camera.main;
+            m_MainCamera = Camera.main;
         }
 
         void Start()
@@ -46,48 +48,46 @@ namespace Gameplay
 
         private void Update()
         {
-            if (MATCH is null)
-                MATCH = FindObjectOfType<Match>();
+            if (m_Match is null)
+                m_Match = FindObjectOfType<Match>();
 
-            if (MATCH.IsGameOver())
+            if (m_Match.IsGameOver())
                 return;
 
             Movement();
 
             Aim();
 
-            if (m_CanHitBall)// && Input.GetKeyDown(KeyCode.Space))
+            if (m_CanHitBall)
                 Launch();
 
-            MATCH.SetPlayerAimIndicatorLocation(m_Target.position);
+            m_Match.SetPlayerAimIndicatorLocation(m_Target.position);
         }
 
         void Movement()
         {
-            input = new
+            m_Input = new
                 (
                     Input.GetAxisRaw("Horizontal"),
                     Input.GetAxisRaw("Vertical")
                 );
 
-            velocity = Vector3.right * input.normalized.x + Vector3.forward * input.normalized.y;
+            m_Velocity = Vector3.right * m_Input.normalized.x + Vector3.forward * m_Input.normalized.y;
 
-            velocity *= (m_MovementSpeed * 2) * input.normalized.magnitude;
+            m_Velocity *= (m_MovementSpeed * 2) * m_Input.normalized.magnitude;
 
-            velocity *= Time.deltaTime;
+            m_Velocity *= Time.deltaTime;
 
-            velocity += 10 * Time.deltaTime * Vector3.down;
+            m_Velocity += 10 * Time.deltaTime * Vector3.down;
 
-            m_CharacterController.Move(velocity);
+            m_CharacterController.Move(m_Velocity);
         }
-
-        Ray ray;
 
         void Aim()
         {
-            ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            m_Ray = m_MainCamera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, m_Mask))
+            if (Physics.Raycast(m_Ray, out RaycastHit hitInfo, m_Mask))
             {
                 m_Target.position =
                 Vector3.forward * -transform.position.z + hitInfo.point.x * Vector3.right;
@@ -101,7 +101,7 @@ namespace Gameplay
             m_Ball.isKinematic = false;
             m_Ball.velocity = CalculateLaunchVelocity();
 
-            MATCH.SetResponsibility(RESPONSIBILITY.ENEMY);
+            m_Match.SetResponsibility(RESPONSIBILITY.ENEMY);
         }
 
         Vector3 CalculateLaunchVelocity()
